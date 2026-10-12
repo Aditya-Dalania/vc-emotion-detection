@@ -6,9 +6,9 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 max_features = yaml.safe_load(open('params.yaml','r'))['feature_engineering']['max_features']
 
-# fetch data from the data/processed
-train_data = pd.read_csv('data/processed/train_processed.csv')
-test_data = pd.read_csv('data/processed/test_processed.csv')
+# fetch data from the data/interim
+train_data = pd.read_csv('data/interim/train_processed.csv')
+test_data = pd.read_csv('data/interim/test_processed.csv')
 
 # Apply Bag of Words (BoW) feature extraction technique to the processed data
 
@@ -42,7 +42,7 @@ test_df['label'] = y_test
 
 # store the data in the data/feature folder
 
-data_path = os.path.join('data', 'featured')
+data_path = os.path.join('data', 'processed')
 os.makedirs(data_path, exist_ok=True)
 train_df.to_csv(os.path.join(data_path, 'train_bow.csv'), index=False)
 test_df.to_csv(os.path.join(data_path, 'test_bow.csv'), index=False)        
